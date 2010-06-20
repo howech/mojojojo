@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# Script to list nodes in a given cluster. Caches the info for
+# later use.
+#
+cl=$1
+if [ "$cl" == "" ] ; then echo -e "Usage: $0 cluster\n\n\texample: $0 gibbon\n" ; exit ; fi
+
+mjuserdir=/tmp/mj-${USER}
+mjclinfo=${mjuserdir}/${cl}-info.log
+mjhosts=${mjuserdir}/${cl}-hosts.log
+
+source "$HOME/.hadoop-ec2/aws_private_setup.sh"
+mkdir -p ${mjuserdir}
+hadoop-ec2 list ${cl} > ${mjclinfo}
+cat ${mjclinfo}
+cat ${mjclinfo} | cut -f4 > ${mjhosts}

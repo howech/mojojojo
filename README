@@ -1,0 +1,6 @@
+Chimps get tired of retyping the same 'ol long commands.
+
+The rule of thumb:
+
+ If you find yourself ctrl-r'ing for the command then it should probably be
+ a shell script.
