@@ -1,0 +1,21 @@
+At some point in time, I had to create 250GB volumes for the cluster nodes and get the hadoop
+file sysetem mounted on them. I already had a cluster going, and I had some stuff already set
+up in hadoop that I did not want to have to rebuild from scratch. So, I ended up writing the
+two scripts in this directory to help me with the task of attaching, mounting, and getting
+the existing hadoop file system onto the new 250GB partions. The original process did not go
+smoothly, and as I found more things that I had to do, I commented out the tasks that had 
+already suceeded. 
+
+There are lots of thing about this that leave a lot to be desired:
+
+* Running a single command line using ssh is not very efficient - especially if you are as far
+away from the world as I am -n sometimes it takes up to a minute to establish a session.
+
+* I never cleaned up the junk "mfs.sh" file that this deposited on the clients
+
+Good things:
+
+It worked - expanded the file system for the cluster only bringing down a single node at a time. File
+system seemed to recover from the surgery.
+
+It gives me something to build on when I need to do something on all the nodes. 
