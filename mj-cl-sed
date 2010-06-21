@@ -1,0 +1,4 @@
+for foo in `cat /tmp/gibbon-slaves.log | head -n3` ; do
+  echo $foo ;
+  sshkp $foo 'sudo sed -i "s/run_list/run_away/" /etc/chef/client-config.json ' &
+done
