@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cl=$1     ; shift
+host=${1} ; shift
+cmd=${@}  ; shift
+
+if [ "$cl" == "" ] ; then echo -e "Usage: $0 cluster\n\n\texample: $0 gibbon 12.34.56.78 cmd [args]\n" ; exit ; fi
+ssh -i ~/.hadoop-ec2/keypairs/${cl}.pem ubuntu@${host} ${cmd}
