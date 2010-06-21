@@ -18,8 +18,9 @@ cookies=${HOME}/.wgetrc.d/cookies.txt
 echo "Recursively (to level ${level}, with limit/wait '${limit_rate}' / '${wait}') fetching '$@', logging to ${log_file}"
 wget -r -l${level} --no-clobber --no-parent                     	\
     --no-verbose -a ${log_file}                              	        \
-    -erobots=off ${wait} $limit_rate			\
+    ${wait} $limit_rate			                                \
     --load-cookies=${cookies} --save-cookies=${cookies} --keep-session-cookies \
+    --user-agent="Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.4) Gecko/20061201 Firefox/2.0.0.4 (Ubuntu-feisty)" \
     $@
 echo "Follow along with tail -f ${log_file}"
 
