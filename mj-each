@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#
+# Ssh into every node in a given cluster, using validation, and
+# execute specified command
+#
 cl=${1} ; shift
 cmd=${@}
 
