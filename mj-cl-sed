@@ -1,4 +1,13 @@
-for foo in `cat /tmp/gibbon-slaves.log | head -n3` ; do
-  echo $foo ;
-  sshkp $foo 'sudo sed -i "s/run_list/run_away/" /etc/chef/client-config.json ' &
-done
+#!/usr/bin/env bash
+
+#
+# Ssh into given node with authentication and replace all strings
+# matching fromstr with tostr
+#
+cl=${1}      ; shift
+host=${1}    ; shift
+fromstr=${1} ; shift
+tostr=${1}   ; shift
+file=${1}
+
+mj-ssh ${cl} ${host} 'sudo sed -i "s/${fromstr}/${tostr}/" ${file}' &
