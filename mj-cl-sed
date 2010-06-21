@@ -10,4 +10,4 @@ fromstr=${1} ; shift
 tostr=${1}   ; shift
 file=${1}
 
-mj-ssh ${cl} ${host} 'sudo sed -i "s/${fromstr}/${tostr}/" ${file}' &
+exec mj-ssh ${cl} ${host} 'sed -i "s/${fromstr}/${tostr}/" ${file}'

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+#
+# Counts number of active tokyo tyrant db connections are open on every node
+# in cluster
+#
+cluster_name=${1} ; shift
+
+if [ "$cluster_name" == "" ] ; then echo -e "Usage: $0 cluster_name\n\n\texample: $0 gibbon\n" ; exit ; fi
+
+make_the_rounds ${cluster_name} "sudo lsof -i | grep ttserver | wc -l"
